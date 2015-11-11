@@ -39,3 +39,6 @@ Thermostat.prototype.turnOffPowerSaving = function(){
 Thermostat.prototype.turnOnPowerSaving = function(){
   this._POWER_SAVER = true;
 };
+Thermostat.prototype.resetButton = function () {
+  this._currentTemperature = this._DEFAULT_TEMPERATURE;
+};

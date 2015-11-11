@@ -7,7 +7,7 @@ describe("Thermostat:", function() {
   });
 
   it("starts with a temperature of 20 degrees", function() {
-    expect(thermostat.temperature()).toEqual(20);
+    expect(thermostat.temperature()).toEqual(thermostat._DEFAULT_TEMPERATURE);
   });
 
   it("has a minimum temperature of 10 degrees", function() {
@@ -26,7 +26,13 @@ describe("Thermostat:", function() {
       thermostat.decreaseTemperature();
       expect(thermostat.temperature()).toEqual(19);
     });
+    it("has a reset button", function() {
+      thermostat.increaseTemperature();
+      thermostat.resetButton();
+      expect(thermostat.temperature()).toEqual(20);
+    });
   });
+
   describe("Power Saving Mode:", function(){
     it("Is on by default", function(){
       expect(thermostat._POWER_SAVER).toBeTruthy();
