@@ -54,4 +54,22 @@ describe("Thermostat:", function() {
       expect(thermostat.isPowerSavingOn()).toEqual(false);
     });
   });
+  describe("Thermostat display colors:", function(){
+    it("is green if less than 18", function(){
+      for(i = 0; i < 3; i++){
+        thermostat.decreaseTemperature();
+      }
+      expect(thermostat.energyUsage()).toBe("low-usage");
+    });
+    it("is yellow if less than 25", function(){
+      expect(thermostat.energyUsage()).toBe("medium-usage");
+    });
+    it("is red if more than 25", function() {
+      thermostat.turnOffPowerSaving();
+      for (i = 0; i < 10; i++){
+        thermostat.increaseTemperature();
+      }
+      expect(thermostat.energyUsage()).toBe("high-usage");
+    });
+  });
 });
