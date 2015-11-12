@@ -1,42 +1,43 @@
 function Thermostat() {
-  this._DEFAULT_TEMPERATURE = 20;
-  this._currentTemperature = 20;
-  this._MINIMUM_TEMPERATURE = 10;
+  this.defTemp = 20;
+  this.temp = 20;
+  this.minTemp = 10;
   this.powerSaver = true;
-  this._MAXIMUM_TEMPERATURE_PSM_ON = 25;
-  this._MAXIMUM_TEMPERATURE_PSM_OFF = 32;
+  this.tempMaxPsmOn = 25;
+  this.tempMaxPsmOff = 32;
   this.MEDIUM_ENERGY_USAGE_LIMIT = 18;
 
 }
 
 Thermostat.prototype.temperature = function() {
-  return this._currentTemperature;
+  return this.temp;
 };
 Thermostat.prototype.isMinimumTemperature = function() {
-  return this._currentTemperature === this._MINIMUM_TEMPERATURE;
+  return this.temp === this.minTemp;
 };
 Thermostat.prototype.isMaximumTemperature = function() {
-  if(this.isPowerSavingOn() === true){
-  return this._currentTemperature === this._MAXIMUM_TEMPERATURE_PSM_ON;}
-  return this._currentTemperature === this._MAXIMUM_TEMPERATURE_PSM_OFF;
+  if(this.isPowerSavingOn()){
+    return this.temp >= this.tempMaxPsmOn;
+  }
+  return this.temp >= this.tempMaxPsmOff;
 };
 Thermostat.prototype.increaseTemperature = function(){
   if(this.isMaximumTemperature()){
     return; }
-  this._currentTemperature += 1;
+  this.temp += 1;
 };
 Thermostat.prototype.decreaseTemperature = function(){
   if (this.isMinimumTemperature()) {
   return; }
-  {this._currentTemperature -= 1;}
+  {this.temp -= 1;}
 };
 Thermostat.prototype.resetButton = function () {
-  this._currentTemperature = this._DEFAULT_TEMPERATURE;
+  this.temp = this.defTemp;
 };
 Thermostat.prototype.energyUsage = function (){
-  if (this._currentTemperature < this.MEDIUM_ENERGY_USAGE_LIMIT)
-    return "low-usage";
-  else if (this._currentTemperature < this._MAXIMUM_TEMPERATURE_PSM_ON)
+  if (this.temp < this.MEDIUM_ENERGY_USAGE_LIMIT)
+    return "red";
+  else if (this.temp < this.tempMaxPsmOn)
     return "medium-usage";
   else
     return "high-usage";

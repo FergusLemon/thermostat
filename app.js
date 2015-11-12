@@ -28,9 +28,15 @@ thermostat = new Thermostat ();
   // }
   // //
   function switchPower() {
+
     if (thermostat.powerSaver) {
       thermostat.turnOffPowerSaving();
     } else {
       thermostat.turnOnPowerSaving();
+      if (thermostat.temp > thermostat.tempMaxPsmOn) {
+        thermostat.temp = thermostat.tempMaxPsmOn;
+      }
+      displayTemp();
     }
+
   }
