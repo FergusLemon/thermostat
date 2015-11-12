@@ -4,20 +4,25 @@
   <meta charset="UTF-8">
   <title>Thermostat</title>
 </head>
+  <script src="src/thermostat.js"></script>
+  <script src="app.js"></script>
 <body>
   <section>
     <h1 id="temperature">Thermolegend</h1>
     <p>
-      <button id="temperature-increase">+</button>
-      <button id="temperature-decrease">-</button>
-      <button id="temperature-reset">reset</button>
-      <button id="powersaving-on">PSM on</button>
-      <button id="powersaving-off">PSM off</button>
+      <div id="temperature-screen">
+        <h1> Temperature: <span id="display"></span> degrees Celsius </h1>
+      </div>
+    <p>
+      <button id="tempUp" onclick='tempUp();'>+</button>
+      <button id="tempDown" onclick='tempDown();'>-</button>
+      <button id="tempReset" onclick='tempReset();'>reset</button>
+      <button id="psmOn"  onclick='psmOn();'>PSM on</button>
+      <button id="psmOff" onclick='psmOff();'>PSM off</button>
       <p>
-        Power saving mode is <span id="power-saving-status">on</span>
+        Power saving mode is <span id="psm">on</span>
       </p>
     </p>
   </section>
-  <script> src="js/thermostat.js"></script>
 </body>
 </html>
