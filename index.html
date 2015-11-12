@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
   <title>Thermostat</title>
 </head>
+  <a href="http://jquery.com/"></a>
   <script src="src/thermostat.js"></script>
   <script src="app.js"></script>
 <body>
+
+
   <section>
     <h1 id="temperature">Thermolegend</h1>
     <p>
@@ -17,11 +21,24 @@
       <button id="tempUp" onclick='tempUp();'>+</button>
       <button id="tempDown" onclick='tempDown();'>-</button>
       <button id="tempReset" onclick='tempReset();'>reset</button>
-      <button id="psmOn"  onclick='psmOn();'>PSM on</button>
-      <button id="psmOff" onclick='psmOff();'>PSM off</button>
-      <p>
+
+  <div class="onoffswitch">
+  <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked onclick='switchPower();'>
+  <label class="onoffswitch-label" for="myonoffswitch">
+      <span class="onoffswitch-inner"></span>
+      <span class="onoffswitch-switch"></span>
+  </label>
+</div>
+
+      <!-- <button id="psmOn"  onclick='psmOn();'>PSM on</button>
+      <button id="psmOff" onclick='psmOff();'>PSM off</button> -->
+      <!-- <p>
         Power saving mode is <span id="psm">on</span>
-      </p>
+      </p> -->
+      <!-- <form id='slider'>
+        <label for="points">Points:</label>
+        <input type="range" name="points" id="points" value="20" min="10" max="">
+      </form> -->
     </p>
   </section>
 </body>

@@ -18,11 +18,19 @@ thermostat = new Thermostat ();
     thermostat.resetButton();
     displayTemp();
   }
-
-  function psmOn() {
-    thermostat.turnOnPowerSaving();
-  }
-
-  function psmOff() {
-    thermostat.turnOffPowerSaving();
+  // //
+  // function psmOn() {
+  //   thermostat.turnOnPowerSaving();
+  // }
+  //
+  // function psmOff() {
+  //   thermostat.turnOffPowerSaving();
+  // }
+  // //
+  function switchPower() {
+    if (thermostat.powerSaver) {
+      thermostat.turnOffPowerSaving();
+    } else {
+      thermostat.turnOnPowerSaving();
+    }
   }
