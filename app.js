@@ -2,6 +2,8 @@ thermostat = new Thermostat ();
 
   function displayTemp() {
   document.getElementById('display').innerHTML =  thermostat.temperature();
+  document.getElementById('display').style.color =  thermostat.energyUsage();
+
   }
 
   function tempUp() {
